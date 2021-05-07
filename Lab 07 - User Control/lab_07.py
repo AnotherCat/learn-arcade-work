@@ -10,7 +10,6 @@ SCREEN_HEIGHT = 600
 MOVEMENT_SPEED = 3
 
 
-
 class Car:
     def __init__(self, pos_x, pos_y, change_x, change_y):
         self.pos_x = pos_x
@@ -20,7 +19,14 @@ class Car:
         self.width = 200
         self.height = 95
         print(pathlib.Path(__file__).parent.absolute())
-        self.sound = arcade.Sound(pathlib.Path(os.path.join(pathlib.Path(__file__).parent.absolute(), pathlib.Path("explosion.wav"))))
+        self.sound = arcade.Sound(
+            pathlib.Path(
+                os.path.join(
+                    pathlib.Path(__file__).parent.absolute(),
+                    pathlib.Path("explosion.wav"),
+                )
+            )
+        )
 
     def update(self):
         self.pos_x += self.change_x
@@ -40,13 +46,19 @@ class Car:
             self.pos_y = SCREEN_HEIGHT - self.height
             self.sound.play()
 
-
     def draw(self):
-        arcade.draw_rectangle_filled(self.pos_x + 100, self.pos_y + 40, 200, 50, arcade.csscolor.GREEN)
-        arcade.draw_rectangle_filled(self.pos_x + 110, self.pos_y + 80, 100, 30, arcade.csscolor.GREEN)
-        arcade.draw_circle_filled(self.pos_x+30, self.pos_y + 15, 15, arcade.csscolor.RED)
-        arcade.draw_circle_filled(self.pos_x+170, self.pos_y + 15, 15, arcade.csscolor.RED)
-
+        arcade.draw_rectangle_filled(
+            self.pos_x + 100, self.pos_y + 40, 200, 50, arcade.csscolor.GREEN
+        )
+        arcade.draw_rectangle_filled(
+            self.pos_x + 110, self.pos_y + 80, 100, 30, arcade.csscolor.GREEN
+        )
+        arcade.draw_circle_filled(
+            self.pos_x + 30, self.pos_y + 15, 15, arcade.csscolor.RED
+        )
+        arcade.draw_circle_filled(
+            self.pos_x + 170, self.pos_y + 15, 15, arcade.csscolor.RED
+        )
 
 
 class MyGame(arcade.Window):
@@ -58,7 +70,7 @@ class MyGame(arcade.Window):
         # Call the parent class initializer
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Lab 7 - User Control")
         self.background_color = arcade.color.SKY_BLUE
-        self.car = Car(50, 50, 0 ,0)
+        self.car = Car(50, 50, 0, 0)
 
     def on_draw(self):
         """ Called whenever we need to draw the window. """
@@ -85,7 +97,6 @@ class MyGame(arcade.Window):
             self.car.change_x = 0
         elif key == arcade.key.W or key == arcade.key.S:
             self.car.change_y = 0
-        
 
 
 def main():

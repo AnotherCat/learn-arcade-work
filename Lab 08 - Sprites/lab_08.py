@@ -37,7 +37,7 @@ class MyGame(arcade.Window):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Sprite Example")
 
         # Variables that will hold sprite lists
-        self.player_list: arcade.SpriteList 
+        self.player_list: arcade.SpriteList
         self.coin_list: arcade.SpriteList
         self.evil_flower_list: arcade.SpriteList
 
@@ -67,7 +67,9 @@ class MyGame(arcade.Window):
 
         # Set up the player
         # Character image from kenney.nl
-        self.player_sprite = arcade.Sprite(get_path("./character.png"), SPRITE_SCALING_PLAYER)
+        self.player_sprite = arcade.Sprite(
+            get_path("./character.png"), SPRITE_SCALING_PLAYER
+        )
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
@@ -90,10 +92,10 @@ class MyGame(arcade.Window):
             flower = arcade.Sprite(get_path("evil.png"), SPRITE_SCALING_FLOWER)
             flower.center_x = random.randrange(SCREEN_WIDTH)
             flower.center_y = random.randrange(SCREEN_HEIGHT)
-            if flower.center_y<=100:
-                flower.center_y+=100
-            if flower.center_x<=100:
-                flower.center_x+=100
+            if flower.center_y <= 100:
+                flower.center_y += 100
+            if flower.center_x <= 100:
+                flower.center_x += 100
             self.evil_flower_list.append(flower)
 
     def on_draw(self) -> None:
@@ -107,8 +109,9 @@ class MyGame(arcade.Window):
         score = f"Score: {self.score}"
         arcade.draw_text(score, 10, 20, arcade.color.WHITE, 14)
         health = f"Health: {self.health}"
-        arcade.draw_text(health, SCREEN_WIDTH-100, SCREEN_HEIGHT - 20, arcade.color.RED, 14)
-
+        arcade.draw_text(
+            health, SCREEN_WIDTH - 100, SCREEN_HEIGHT - 20, arcade.color.RED, 14
+        )
 
     def on_mouse_motion(self, x: float, y: float, dx: float, dy: float) -> None:
         """ Handle Mouse Motion """
@@ -135,10 +138,12 @@ class MyGame(arcade.Window):
             coin.remove_from_sprite_lists()
             self.score += 1
 
-        flower_hit_list = arcade.check_for_collision_with_list( self.player_sprite, self.evil_flower_list)
+        flower_hit_list = arcade.check_for_collision_with_list(
+            self.player_sprite, self.evil_flower_list
+        )
         for flower in flower_hit_list:
             flower.remove_from_sprite_lists()
-            self.health-=1
+            self.health -= 1
         if self.health <= 0:
             sys.exit()
 
