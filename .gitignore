@@ -6,3 +6,6 @@ Thumbs.db
 .DS_Store
 
 **/Scratch Work/
+
+.pdm.toml
+__pypackages__/
