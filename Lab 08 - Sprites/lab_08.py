@@ -29,10 +29,10 @@ def get_path(path: str) -> str:
 
 
 class MyGame(arcade.Window):
-    """ Our custom Window Class"""
+    """Our custom Window Class"""
 
     def __init__(self) -> None:
-        """ Initializer """
+        """Initializer"""
         # Call the parent class initializer
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Sprite Example")
 
@@ -52,7 +52,7 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.AMAZON)
 
     def setup(self) -> None:
-        """ Set up the game and initialize the variables. """
+        """Set up the game and initialize the variables."""
 
         # Sprite lists
         self.player_list = arcade.SpriteList()
@@ -99,7 +99,7 @@ class MyGame(arcade.Window):
             self.evil_flower_list.append(flower)
 
     def on_draw(self) -> None:
-        """ Draw everything """
+        """Draw everything"""
         arcade.start_render()
         self.coin_list.draw()
         self.player_list.draw()
@@ -114,14 +114,14 @@ class MyGame(arcade.Window):
         )
 
     def on_mouse_motion(self, x: float, y: float, dx: float, dy: float) -> None:
-        """ Handle Mouse Motion """
+        """Handle Mouse Motion"""
 
         # Move the center of the player sprite to match the mouse x, y
         self.player_sprite.center_x = x
         self.player_sprite.center_y = y
 
     def update(self, delta_time: float) -> None:
-        """ Movement and game logic """
+        """Movement and game logic"""
 
         # Call update on all sprites (The sprites don't do much in this
         # example though.)
@@ -149,7 +149,7 @@ class MyGame(arcade.Window):
 
 
 def main() -> None:
-    """ Main method """
+    """Main method"""
     window = MyGame()
     window.setup()
     arcade.run()

@@ -62,10 +62,10 @@ class Car:
 
 
 class MyGame(arcade.Window):
-    """ Our Custom Window Class"""
+    """Our Custom Window Class"""
 
     def __init__(self):
-        """ Initializer """
+        """Initializer"""
 
         # Call the parent class initializer
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Lab 7 - User Control")
@@ -73,7 +73,7 @@ class MyGame(arcade.Window):
         self.car = Car(50, 50, 0, 0)
 
     def on_draw(self):
-        """ Called whenever we need to draw the window. """
+        """Called whenever we need to draw the window."""
         arcade.start_render()
         self.car.draw()
 
@@ -81,7 +81,7 @@ class MyGame(arcade.Window):
         self.car.update()
 
     def on_key_press(self, key, modifiers):
-        """ Called whenever the user presses a key. """
+        """Called whenever the user presses a key."""
         if key == arcade.key.A:
             self.car.change_x = -MOVEMENT_SPEED
         elif key == arcade.key.D:
@@ -92,7 +92,7 @@ class MyGame(arcade.Window):
             self.car.change_y = -MOVEMENT_SPEED
 
     def on_key_release(self, key, modifiers):
-        """ Called whenever a user releases a key. """
+        """Called whenever a user releases a key."""
         if key == arcade.key.A or key == arcade.key.D:
             self.car.change_x = 0
         elif key == arcade.key.W or key == arcade.key.S:
